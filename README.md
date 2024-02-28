@@ -173,11 +173,11 @@ private void readUtf8_slow (int charCount, int charIndex) {
 
 混淆字符串类型的变量，相关调用栈
 
-![](/Users/nivia/Desktop/Github/img/9.png)
+![](./img/9.png)
 
 混淆Class类型的变量
 
-![](/Users/nivia/Desktop/Github/img/10.png)
+![](./img/10.png)
 
 在DefaultSerializers中，更多的还有StringBuffer和StringBuilder、Charset、URL
 
@@ -187,13 +187,13 @@ private void readUtf8_slow (int charCount, int charIndex) {
 
   存放允许混淆的类型时
 
-  ![](/Users/nivia/Desktop/Github/img/11.png)
+  ![](./img/11.png)
 
 - MapSerializer
 
   key、value是允许混淆的类型时
 
-  ![](/Users/nivia/Desktop/Github/img/12.png)
+  ![](./img/12.png)
 
 等等
 
@@ -201,13 +201,13 @@ private void readUtf8_slow (int charCount, int charIndex) {
 
 其实这里很简单，重写Output源码，让数据写入IO流的操作全走writeString_slow方法
 
-![](/Users/nivia/Desktop/Github/img/13.png)
+![](./img/13.png)
 
 分别对应着1、3、2字节的写入方法，然后注释掉1、3字节写入的部分就能实现数据混淆
 
 混淆前后对比
 
-![](/Users/nivia/Desktop/Github/img/14.png)
+![](./img/14.png)
 
 ### 更近一步
 
@@ -226,21 +226,21 @@ output.close();
 
 UTF-8形式
 
-![](/Users/nivia/Desktop/Github/img/15.png)
+![](./img/15.png)
 
 ASCII形式
 
-![](/Users/nivia/Desktop/Github/img/16.png)
+![](./img/16.png)
 
 原理也很简单，还原最后一位字符，把Utf8Length写到前头就OK了
 
 最后一位的操作
 
-![](/Users/nivia/Desktop/Github/img/17.png)
+![](./img/17.png)
 
 逆向操作
 
-![](/Users/nivia/Desktop/Github/img/18.png)
+![](.img/18.png)
 
 ### 结语
 
